@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const { isEmail } = require('validator')
 
 const UserSchema = new Schema({
-  userName: {
+  username: {
     type: String,
     required: [true, "Username is a required field"]
   },
@@ -46,7 +46,6 @@ UserSchema.statics.login = async function (email, password) {
     throw Error("Password incorrect")
   }
   throw Error("Email not registered")
-
 }
 
 

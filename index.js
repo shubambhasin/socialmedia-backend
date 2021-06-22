@@ -7,7 +7,9 @@ const SignupRouter = require('./routes/signupRouter')
 const SigninRouter = require('./routes/signinRouter')
 
 // misc
+
 app.use(cors())
+app.use(express.json());
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -19,8 +21,8 @@ connectDatabase()
 app.get('/', (req, res) => {
   res.send('Hello Express app!')
 });
-app.use('/signup', SigninRouter)
-app.use('/signin', SignupRouter)
+app.use('/signup', SignupRouter)
+app.use('/signin', SigninRouter)
 app.listen(3000, () => {
   console.log('server started');
 });

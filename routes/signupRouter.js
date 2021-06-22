@@ -23,7 +23,8 @@ router.route('/')
       res.json({success: true, name: user.name, token})
     }
     catch(error){
-      handleError(error, res)
+      // handleError(error, res)
+      res.status(400).json({error})
     }
 
 })
