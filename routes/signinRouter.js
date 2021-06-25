@@ -9,6 +9,9 @@ router.route('/')
 })
 .post( async(req, res) => {
 
+  const token = req.header.authorization
+  const userId = decodeUserId
+
 })
 
 module.exports = router
