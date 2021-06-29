@@ -24,7 +24,7 @@ router.route('/')
     }
     catch(error){
       // handleError(error, res)
-      res.status(400).json({error})
+      res.status(400).json({error: error.message})
     }
 
 })

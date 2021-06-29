@@ -17,12 +17,17 @@ mongoose.set('useCreateIndex', true);
 connectDatabase()
 // routes
 app.get('/', (req, res) => {
-  console.log(req.headers.authorization)
+
   res.send('Hello Express app!')
 });
 app.use('/signup', SignupRouter)
 app.use('/signin', SigninRouter)
 app.use('/post', PostRouter)
+
+// default 
+app.get('*', (req, res) => {
+  res.status(404).json({ message: `Could not find page ${req.url}` });
+});
 
 app.listen(3000, () => {
   console.log('server started');

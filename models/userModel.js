@@ -6,7 +6,8 @@ const { isEmail } = require('validator')
 const UserSchema = new Schema({
   username: {
     type: String,
-    required: [true, "Username is a required field"]
+    required: [true, "Username is a required field"],
+    unique: true
   },
   name: {
     type: String,
@@ -32,7 +33,7 @@ const salt = await bcrypt.genSalt()
 this.password = await bcrypt.hash(this.password, salt)
 next()
 })
-UserSchema.statics.login = async function (email, password) {
+UserSchema.statics.login = async function (email, password, res) {
 
   const user = await this.findOne({ email })
   if(user)
@@ -43,9 +44,10 @@ UserSchema.statics.login = async function (email, password) {
     {
       return user;
     }
-    throw Error("Password incorrect")
+    // throw Error("Password incorrect")
+  res.status(401).json({success: false, message: "Password incorrect"})
   }
-  throw Error("Email not registered")
+  res.status(404).json({success: false, message: "Email not registered"})
 }
 
 

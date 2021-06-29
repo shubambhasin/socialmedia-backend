@@ -7,8 +7,9 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
-  post: {
-    text: {
+  post: [
+   {
+      text: {
       type: String,
       required: [true, "Enter something to post"]
     },
@@ -19,7 +20,9 @@ const PostSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'user'
     }
-  }
+
+   }
+  ]
 
 })
 const Post = new model('posts', PostSchema)
