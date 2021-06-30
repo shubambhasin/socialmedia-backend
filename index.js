@@ -6,6 +6,7 @@ const connectDatabase = require('./db/db.connect.js')
 const SignupRouter = require('./routes/signupRouter')
 const SigninRouter = require('./routes/signinRouter')
 const PostRouter = require('./routes/postRouter')
+const HomeRouter = require('./routes/homeRouter.js')
 // misc
 
 app.use(cors())
@@ -22,8 +23,8 @@ app.get('/', (req, res) => {
 });
 app.use('/signup', SignupRouter)
 app.use('/signin', SigninRouter)
-app.use('/post', PostRouter)
-
+app.use('/posts', PostRouter)
+app.use('/home', HomeRouter)
 // default 
 app.get('*', (req, res) => {
   res.status(404).json({ message: `Could not find page ${req.url}` });

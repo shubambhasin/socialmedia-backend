@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { Schema, model} = mongoose
+const { Schema, model } = mongoose
 
 const PostSchema = new Schema({
 
@@ -7,21 +7,34 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
-  post: [
-   {
-      text: {
-      type: String,
-      required: [true, "Enter something to post"]
-    },
-    imageUrl: {
+  author: {
+    name: {
       type: String
     },
-    likes: {
-      type: Schema.Types.ObjectId,
-      ref: 'user'
+    username: {
+      type: String
+    },
+    email: {
+      type: String
     }
+  },
+  post: [
+    {
+      text: {
+        type: String,
+        required: [true, "Enter something to post"]
+      },
+      imageUrl: {
+        type: String
+      },
+      likes: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user'
+        }
+      ]
 
-   }
+    }
   ]
 
 })
