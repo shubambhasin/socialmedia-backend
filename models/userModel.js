@@ -23,7 +23,19 @@ const UserSchema = new Schema({
       type: String,
        type: String,
     minlength: [6,"password should be atleast of 6 characters"]
-  }
+  },
+  followers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
 })
 
 // hooks

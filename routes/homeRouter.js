@@ -6,12 +6,9 @@ router.route('/')
 .get( async (req, res) => {
 
   try{
-
-    
-
-    const posts = await Post.find().populate('user')
+    const posts = await Post.find().populate('userId')
     console.log(posts)
-    res.json({posts})
+    res.json({success: true, posts})
 
   }
   catch(error)

@@ -7,6 +7,7 @@ const SignupRouter = require('./routes/signupRouter')
 const SigninRouter = require('./routes/signinRouter')
 const PostRouter = require('./routes/postRouter')
 const HomeRouter = require('./routes/homeRouter.js')
+const UsersRouter = require('./routes/usersRouter.js')
 // misc
 
 app.use(cors())
@@ -25,6 +26,7 @@ app.use('/signup', SignupRouter)
 app.use('/signin', SigninRouter)
 app.use('/posts', PostRouter)
 app.use('/home', HomeRouter)
+app.use('/profiles', UsersRouter)
 // default 
 app.get('*', (req, res) => {
   res.status(404).json({ message: `Could not find page ${req.url}` });

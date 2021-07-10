@@ -20,7 +20,7 @@ router.route('/')
     })
       const user = await newUser.save()
       const token = createToken(user._id)
-      res.json({success: true, name: user.name, token})
+      res.json({success: true, name: user.name, token, _id: user._id})
     }
     catch(error){
       // handleError(error, res)
